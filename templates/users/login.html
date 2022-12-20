@@ -1,0 +1,26 @@
+{% extends 'includes/layout.html' %}
+{% block body %}
+    {% load crispy_forms_tags %}
+    <div class="login-reg-panel" style="margin-top: 20rem">
+        <div class="login-info-box">
+            <h2>Hesbım Var</h2>
+            <p>Giriş Yap</p>
+            <label id="label-register" for="log-reg-show">Giriş Yap</label>
+            <input type="radio"
+                   name="active-log-panel"
+                   id="log-reg-show"
+                   checked="checked"/>
+        </div>
+        <div class="white-panel">
+            <div class="login-show">
+                <h2>Giriş Yap</h2>
+                <form method="post">
+                    {{ form.errors.username }} {{ form.errors.password }} {% csrf_token %}
+                    {{ form | crispy  }}
+                    <input type="submit" value="Giriş Yap" />
+                    {% comment %} <a href="">Forgot password?</a> {% endcomment %}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

@@ -1,0 +1,21 @@
+{% extends 'includes/layout.html' %}
+{% block body %}
+  <div class="login-reg-panel" style="margin-top: 20rem">
+    <div class="register-info-box">
+      <h2>Hesabın Yok mu ?</h2>
+      <p>Hemen Kaydol.</p>
+      <label id="label-login" for="log-login-show">Kayıt Ol.</label>
+      <input type="radio" name="active-log-panel" id="log-login-show" />
+    </div>
+    <div class="white-panel">
+      <div class="register-show">
+        <h2>Kayıt Ol</h2>
+        <form method="post">
+          {{ form.errors.username }} {{ form.errors.password }} {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Kaydol" />
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock body %}
