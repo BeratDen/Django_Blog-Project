@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from article import views
+
+handler404 = 'article.views.custom_page_not_found_view'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name="index"),

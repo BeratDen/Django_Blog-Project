@@ -1,15 +1,23 @@
-{% extends 'includes/layout.html' %} {% block body %}
-
-<div class="h-100 p-5 mt-5 text-bg-secondary rounded-3">
-  <h2>Yazılım Bilimi Bloğuna Hoşgeldiniz</h2>
-  <p>Bu blogta geliştiriceler olarak blog yazılılarınız paylaşabilrisiniz.</p>
-</div>
-
-{% if number2 == 20 %}
-<p>Sayımız 20 ye eşit</p>
-{% else %}
-<p>Sayımız 20 ye eşit değil</p>
-{% endif %} {% for i in numbers %}
-<p>{{ i }}</p>
-<br />
-{% endfor %} {% endblock body %}
+{% extends "includes/layout.html" %}
+{% block body %}
+  <div class="h-100 p-5 mt-5 text-bg-secondary rounded-3">
+    <h2>Yazılım Bilimi Bloğuna Hoşgeldiniz</h2>
+    <p>Bu blogta geliştiriceler olarak blog yazılılarınız paylaşabilrisiniz.</p>
+  </div>
+  <p>
+    {% if request.user.is_authenticated %}
+      {{ request.user.username }}
+    {% else %}
+      Giriş Yapılmadı
+    {% endif %}
+  </p>
+  {% if number2 == 20 %}
+    <p>Sayımız 20 ye eşit</p>
+  {% else %}
+    <p>Sayımız 20 ye eşit değil</p>
+  {% endif %}
+  {% for i in numbers %}
+    <p>{{ i }}</p>
+    <br />
+  {% endfor %}
+{% endblock body %}

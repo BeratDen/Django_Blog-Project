@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate
+from django.contrib.auth import logout as auth_logout
 # Create your views here.
 
 
@@ -58,4 +59,6 @@ def login(request):
 
 
 def logout(request):
-    pass
+    auth_logout(request)
+    messages.success(request, "Başarıyla Çıkış Yapıldı")
+    return redirect("index")
