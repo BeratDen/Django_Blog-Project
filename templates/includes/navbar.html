@@ -12,7 +12,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/">Anasayfa</a>
         </li>
@@ -28,6 +28,23 @@
         <li class="nav-item">
           <a class="nav-link" href="#">İletişim</a>
         </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        {% if request.user.is_authenticated %}
+          <li class="nav-item active">
+            <a class="nav-link" href="/users/logout">Çıkış Yap</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/articles/dashboard">Kontrol Paneli</a>
+          </li>
+        {% else %}
+          <li class="nav-item active">
+            <a class="nav-link" href="/users/login">Giriş Yap</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/users/register">Kaydol</a>
+          </li>
+        {% endif %}
       </ul>
     </div>
   </div>
