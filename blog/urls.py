@@ -17,6 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from article import views
 
+# Media
+from django.conf import settings
+from django.conf.urls.static import static
+
 handler404 = 'article.views.custom_page_not_found_view'
 
 urlpatterns = [
@@ -26,3 +30,7 @@ urlpatterns = [
     path('articles/', include("article.urls")),
     path('users/', include("user.urls")),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
